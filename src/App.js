@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
+import AuthContext from './store/auth-context'; // <-- our context state store.
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,14 +33,15 @@ const App = () => {
     setIsLoggedIn(false);
   };
   
+  // Because we are using AuthContext.Provider as the wrapping, we don't need to use a React fragment.
   return (
-    <>
+    <AuthContext.Provider>
       <MainHeader isAuthenticated={isLoggedIn} onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
       </main>
-    </>
+    </AuthContext.Provider>
   );
 }
 
