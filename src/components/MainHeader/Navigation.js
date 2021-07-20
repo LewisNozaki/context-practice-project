@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Navigation.module.css';
 import AuthContext from '../../store/auth-context'; // <-- our context state store.
 
-const Navigation = ({ isLoggedIn, onLogout }) => {
+const Navigation = ({ onLogout }) => {
   return (
     <AuthContext.Consumer>
       {(contextData) => {

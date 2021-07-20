@@ -6,7 +6,7 @@ const MainHeader = ({ isAuthenticated, onLogout }) => {
   return (
     <header className={styles['main-header']}>
       <h1>GingerLily</h1>
-      <Navigation isLoggedIn={isAuthenticated} onLogout={onLogout} />
+      <Navigation onLogout={onLogout} />
     </header>
   );
 };

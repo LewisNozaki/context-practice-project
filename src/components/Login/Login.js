@@ -81,7 +81,7 @@ const Login = ({ onLogin }) => {
   useEffect(() => {
     const validityTimer = setTimeout(() => {
       setFormIsValid(emailIsValid && pwIsValid);
-    }, 600);
+    }, 400);
     
     return () => {
       clearTimeout(validityTimer);
@@ -113,7 +113,7 @@ const Login = ({ onLogin }) => {
       type: "INPUT_BLUR"
     });
   };
-
+  
   const submitHandler = e => {
     e.preventDefault();
 
@@ -143,7 +143,6 @@ const Login = ({ onLogin }) => {
             passwordState.isValid === false ? styles.invalid : ''
           }`}
         >
-          {console.log(passwordState)}
           <label htmlFor="password">Password</label>
           <input
             type="password"
