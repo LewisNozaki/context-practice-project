@@ -22,7 +22,7 @@ const App = () => {
   const loginHandler = (email, password) => {
     // Saves a key-value pair to local storage when an user logs in successfully. 
     localStorage.setItem("isLoggedIn", "1");
-    
+
     setIsLoggedIn(true);
   };
 
@@ -33,8 +33,8 @@ const App = () => {
     setIsLoggedIn(false);
   };
   
-  // Because we are using AuthContext.Provider as the wrapping, we don't need to use a React fragment.
   return (
+    // Because we are using AuthContext.Provider as the wrapping, we don't need to use a React fragment.
     <AuthContext.Provider 
       value={{
         isLoggedIn: isLoggedIn,
