@@ -153,7 +153,9 @@ const Login = ({ onLogin }) => {
           />
         </div>
         <div className={styles.actions}>
-          <Button type="submit" className={styles.btn} disabled={!formIsValid}>
+          <Button 
+            type="submit" 
+            disabled={!formIsValid}>
             Login
           </Button>
         </div>
