@@ -18,7 +18,7 @@ const App = () => {
     };
     
   }, [])
-  
+
   const loginHandler = (email, password) => {
     // This just logs the email and password. Right now, there is no other logic working.
     console.table({email: email, password: password});
@@ -28,7 +28,7 @@ const App = () => {
 
     setIsLoggedIn(true);
   };
-
+  
   const logoutHandler = () => {
     // Removed the key-value pair of isLoggedIn if they press the log out button.
     localStorage.removeItem("isLoggedIn");
@@ -41,9 +41,10 @@ const App = () => {
     <AuthContext.Provider 
       value={{
         isLoggedIn: isLoggedIn,
+        onLogout: logoutHandler // <-- we can add methods to our Provider as well.
       }}
     >
-      <MainHeader onLogout={logoutHandler} />
+      <MainHeader /> {/* we can remove the onLogout prop because the MainHeader and Nav components have access to the useContext */}
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}
         {isLoggedIn && <Home onLogout={logoutHandler} />}
