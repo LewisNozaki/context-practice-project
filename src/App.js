@@ -11,8 +11,8 @@ const App = () => {
     <>
       <MainHeader /> 
       <main>
-        {!contextData.isLoggedIn && <Login onLogin={contextData.loginHandler} />}
-        {contextData.isLoggedIn && <Home onLogout={contextData.logoutHandler} />}
+        {!contextData.isLoggedIn && <Login onLogin={contextData.onLogin} />}
+        {contextData.isLoggedIn && <Home onLogout={contextData.onLogout} />}
       </main>
     </>
   );
