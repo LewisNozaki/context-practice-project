@@ -1,10 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // This initiates the context store. Place the initial state in between the parenthesis.
 const AuthContext = React.createContext({
   isLoggedIn: false,
-  onLogout: null
+  onLogout: null,
+  onLogin: null
 });
+
+// Named export
+export const AuthContextProvider = ({ children }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  // useEffect
+  useEffect(() => {
+    const LSisLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (LSisLoggedIn) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const loginHandler = (email, password) => {
+    console.table({email: email, password: password});
+    
+    localStorage.setItem("isLoggedIn", "1");
+
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem("isLoggedIn");
+
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        isLoggedIn: isLoggedIn,
+        onLogout: logoutHandler,
+        onLogin: loginHandler
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  )
+};
 
 export default AuthContext;
 
