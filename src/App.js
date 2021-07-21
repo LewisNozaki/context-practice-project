@@ -18,8 +18,11 @@ const App = () => {
     };
     
   }, [])
-
+  
   const loginHandler = (email, password) => {
+    // This just logs the email and password. Right now, there is no other logic working.
+    console.table({email: email, password: password});
+    
     // Saves a key-value pair to local storage when an user logs in successfully. 
     localStorage.setItem("isLoggedIn", "1");
 
