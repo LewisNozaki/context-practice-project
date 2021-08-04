@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect, useContext } from 'react';
+import React, { useState, useReducer, useEffect, useContext, useRef } from 'react';
 import Card from '../UI/Card/Card';
 import styles from './Login.module.css';
 import Button from '../UI/Button/Button';
@@ -86,6 +86,10 @@ const Login = ({ onLogin }) => {
   const { isValid: emailIsValid } = emailState;
   const { isValid: pwIsValid } = passwordState;
 
+  // useRef
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
   // useEffect
   useEffect(() => {
     const validityTimer = setTimeout(() => {
@@ -129,9 +133,9 @@ const Login = ({ onLogin }) => {
     if (formIsValid) {
       contextData.onLogin(emailState.value, passwordState.value);
     } else if (!emailIsValid) {
-      
+      emailInputRef.current.activate();
     } else {
-
+      passwordInputRef.current.activate();
     }
   };
 
@@ -147,6 +151,7 @@ const Login = ({ onLogin }) => {
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
           isValid={emailState.isValid}
+          ref={emailInputRef}
         />
         <Input 
           type="password"
@@ -157,6 +162,7 @@ const Login = ({ onLogin }) => {
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}
           isValid={passwordState.isValid}
+          ref={passwordInputRef}
         />
         <div className={styles.actions}>
           <Button 
