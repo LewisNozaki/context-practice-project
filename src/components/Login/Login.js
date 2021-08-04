@@ -126,9 +126,15 @@ const Login = ({ onLogin }) => {
   const submitHandler = e => {
     e.preventDefault();
 
-    contextData.onLogin(emailState.value, passwordState.value);
+    if (formIsValid) {
+      contextData.onLogin(emailState.value, passwordState.value);
+    } else if (!emailIsValid) {
+      
+    } else {
+
+    }
   };
-  
+
   return (
     <Card className={styles.login}>
       <form onSubmit={submitHandler}>
@@ -155,7 +161,8 @@ const Login = ({ onLogin }) => {
         <div className={styles.actions}>
           <Button 
             type="submit" 
-            disabled={!formIsValid}>
+            // disabled={!formIsValid}
+          >
             Login
           </Button>
         </div>
