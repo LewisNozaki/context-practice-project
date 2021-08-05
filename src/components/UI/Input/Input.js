@@ -6,11 +6,11 @@ const Input = forwardRef(({ type, id, value, onChange, onBlur, isValid, htmlFor,
 
   const activate = () => {
     inputRef.current.focus();
-  }
+  };
   
   useImperativeHandle(ref, () => {
     return {
-      focus: activate
+      focus: activate,
     }
   });
 
@@ -22,6 +22,7 @@ const Input = forwardRef(({ type, id, value, onChange, onBlur, isValid, htmlFor,
         {label}
       </label>
       <input
+        ref={inputRef}
         type={type}
         id={id}
         value={value}

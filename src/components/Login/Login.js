@@ -133,12 +133,12 @@ const Login = ({ onLogin }) => {
     if (formIsValid) {
       contextData.onLogin(emailState.value, passwordState.value);
     } else if (!emailIsValid) {
-      emailInputRef.current.activate();
+      emailInputRef.current.focus();
     } else {
-      passwordInputRef.current.activate();
+      passwordInputRef.current.focus();
     }
   };
-
+  
   return (
     <Card className={styles.login}>
       <form onSubmit={submitHandler}>
